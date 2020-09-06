@@ -16,3 +16,11 @@ The wiring image shows how to wire the pieces together.
 ![alt text](https://github.com/pitbull36/wifi_weather_station/blob/master/wifi_weather_station.png?raw=true)
 
 The code is in the .ino file. This contains the RemoteXY app too and uses the RemoteXY libraries.
+
+Here is hot it appears:
+
+![alt text](https://github.com/pitbull36/wifi_weather_station/blob/master/arduino.jpg?raw=true)
+
+And the app view:
+
+![alt text](https://github.com/pitbull36/wifi_weather_station/blob/master/app_view.png?raw=true)
