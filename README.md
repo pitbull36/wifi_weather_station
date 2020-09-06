@@ -1,7 +1,7 @@
 # Arduino - Temperature and Humidity detector (with DHT11 or DHT22)
 
 This is a simple project to create a wifi weather station to measure temperature and humidity.
-The wifi module (ESP8266) will act as wifi spot. Through an RemoteXY app you will be able to connect to Arduino and see temperature and humidity.
+The wifi module (ESP8266) will act as a wifi spot. Through an RemoteXY app you will be able to connect to Arduino and see temperature and humidity.
 The UI will show temperature, humidity in numbers, a graph updating the measures in time (every 5 sec but you can change the delay in the .ino code),
 and an arch updating with the temperature number.
 
