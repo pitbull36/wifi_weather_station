@@ -13,6 +13,9 @@ PIECES:
 
 The wiring image shows how to wire the pieces together. 
 
+IMPORTANT: when you upload the code onto the Arduino, be sure to disconnect temporarily the TX or RX cable from the Arduino or it will be impossible to upload the code.
+After the upload, put back the wire into the correct pin.
+
 ![alt text](https://github.com/pitbull36/wifi_weather_station/blob/master/wifi_weather_station.png?raw=true)
 
 The code is in the .ino file. This contains the RemoteXY app too and uses the RemoteXY libraries.
