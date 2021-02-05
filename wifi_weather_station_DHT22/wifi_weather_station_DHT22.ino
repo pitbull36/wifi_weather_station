@@ -31,7 +31,7 @@
 #define REMOTEXY_SERVER_PORT 6377
 
 
-// RemoteXY configurate  
+// RemoteXY configuration depending on the GUI designed on their website
 #pragma pack(push, 1)
 uint8_t RemoteXY_CONF[] =
   { 255,0,0,32,0,104,0,10,24,0,
@@ -50,16 +50,16 @@ uint8_t RemoteXY_CONF[] =
 // this structure defines all the variables and events of your control interface 
 struct {
 
-    // output variables
-  int8_t arch; // =0..100 level position 
-  int8_t lancetta; // =0..100 level position 
-  float graph_var1;
-  float graph_var2;
-  char temp[11];  // string UTF8 end zero 
-  char hum[11];  // string UTF8 end zero 
+  // output variables
+  int8_t arch;      // =0..100 level position 
+  int8_t lancetta;  // =0..100 level position
+  float graph_var1; // first variable in the graph
+  float graph_var2; // second variable in the graph
+  char temp[11];    // string UTF8 end zero 
+  char hum[11];     // string UTF8 end zero 
 
-    // other variable
-  uint8_t connect_flag;  // =1 if wire connected, else =0 
+  // other variables
+  uint8_t connect_flag; // =1 if wire connected, else =0 
 
 } RemoteXY;
 #pragma pack(pop)
@@ -71,6 +71,7 @@ struct {
 #include <DHT.h>
 #include <Adafruit_Sensor.h>
 
+// define DHT sensor type and assigned pin
 #define DHTPIN 7
 #define DHTTYPE DHT22
 DHT dht = DHT(DHTPIN, DHTTYPE);
@@ -79,34 +80,31 @@ void setup()
 {
   RemoteXY_Init (); 
   
-  // TODO you setup code
-
-  // Setup sensor:
+  // Setup DHT22 sensor
   dht.begin();
 }
 
 void loop() 
 { 
   RemoteXY_Handler ();
-  
-  // TODO you loop code
-  // use the RemoteXY structure for data transfer
-  // do not call delay() 
 
   // start reading temp and humidity
   double t = dht.readTemperature();
   double h = dht.readHumidity();
 
-  Serial.println(t);
+  Serial.println(t); // debug purposes
 
+  // cast to int
   int t_int = static_cast<int>(t);
   int h_int = static_cast<int>(h);
 
+  // print them on the GUI
   dtostrf(t, 0, 2, RemoteXY.temp);
   dtostrf(h, 0, 2, RemoteXY.hum);
 
   delay(5000);
 
+  // populate the elements of the GUI
   RemoteXY.arch = t_int;
   RemoteXY.lancetta = h_int;
   
